@@ -1,0 +1,177 @@
+<Document>
+<Version> 22 </Version>
+<JMadonnaVersion> 10.2.8 </JMadonnaVersion>
+<Bounds> 0 0 1920 980 </Bounds>
+<NotesEditor>
+<jeditorpane>
+<size>13</size><family>Lucida Grande</family>
+
+
+
+
+
+</jeditorpane>
+</NotesEditor>
+<jmadonna.EquationPanel>
+<DocPanel>
+</DocPanel>
+<jeditorpane>
+<size>12</size><family>Serif</family>METHOD RK4
+
+STARTTIME = 0
+STOPTIME=24
+DT = 0.02
+
+;##Model equation: 1-compartment model##
+;One-compartment model
+d/dt(A1) = -ka*A1
+d/dt(A2) = ka*A1 - (CL/V)*A2
+
+
+;##Ouput equation##
+Cp = A2/(V/F)
+Cp1 = Cp*(1+NORMAL(0,SQRT(SIG1)))
+
+;##Initial condition##
+init A1 = Dose
+init A2 = 0
+
+
+;##Value of Parameter##
+Dose = 100  ;mg
+ka = 1          ; hr-1
+CL = 5          ; L/hr-1
+V = 10         ; L
+F = 1            ; BA
+SIG1 = 0.01  ; RV CV=10%
+
+;##DISPLAY##
+DISPLAY Cp, Cp1
+
+
+
+
+</jeditorpane>
+</jmadonna.EquationPanel>
+
+<imethod> rk4 </imethod>
+<Sliders>
+<SliderInfo>
+<name> OM1 </name>
+<default> 0.0 </default>
+<min> 0.0 </min>
+<max> 0.4 </max>
+<inc> 0.01 </inc>
+<log> false </log>
+<neg> false </neg>
+
+</SliderInfo>
+<SliderInfo>
+<name> SIG1 </name>
+<default> 0.0 </default>
+<min> 0.001 </min>
+<max> 0.1 </max>
+<inc> 0.01 </inc>
+<log> false </log>
+<neg> false </neg>
+
+</SliderInfo>
+</Sliders>
+<jmadonna.ParameterPanel>
+<DocPanel>
+</DocPanel>
+<ParamSets>
+</ParamSets>
+</jmadonna.ParameterPanel>
+<jmadonna.MultiPanel>
+<DocPanel>
+</DocPanel>
+<DividerPercent> 1.0 </DividerPercent>
+<Orientation> -1 </Orientation>
+<idx> 0 </idx>
+<TabSplitter>
+<SelectedIndex> 0 </SelectedIndex>
+<graph.COutputFrame>
+<DocPanel>
+<Name>
+Graph 1
+</Name>
+</DocPanel>
+<slidersVisible> true </slidersVisible>
+
+<SingleView>
+<graph.COutputView>
+<Name> Graph </Name>
+<GraphToolBar>
+<Grid> 1 </Grid>
+</GraphToolBar>
+<Plot>
+<LineWidth> 1 </LineWidth>
+</Plot>
+<OV_XVAR>
+<VI_SYMBOL> TIME </VI_SYMBOL>
+</OV_XVAR>
+<OV_YVARS>
+<OV_YVAR_I>
+<VI_SYMBOL> Cp </VI_SYMBOL>
+<VI_SHOW> true </VI_SHOW>
+<VI_Y2AXIS> false </VI_Y2AXIS>
+</OV_YVAR_I>
+<OV_YVAR_I>
+<VI_SYMBOL> Cp1 </VI_SYMBOL>
+<VI_SHOW> true </VI_SHOW>
+<VI_Y2AXIS> false </VI_Y2AXIS>
+</OV_YVAR_I>
+</OV_YVARS>
+<OV_TABLE> false </OV_TABLE>
+<OV_FFT> false </OV_FFT>
+<OV_COLORS> true </OV_COLORS>
+<OV_STYLES> false </OV_STYLES>
+<OV_OSCMODE> false </OV_OSCMODE>
+<OV_LINES> true </OV_LINES>
+<OV_POINTS> false </OV_POINTS>
+<OV_GRID> true </OV_GRID>
+<OV_DBTN> true </OV_DBTN>
+<OV_LEGEND> false </OV_LEGEND>
+<OV_PARAMS> false </OV_PARAMS>
+<OV_READOUT> false </OV_READOUT>
+<OV_INITCOND> false </OV_INITCOND>
+<OV_RDOUTFXFY> 0.0 0.0 </OV_RDOUTFXFY>
+<OV_ZSNORMAL>
+</OV_ZSNORMAL>
+<OV_ZSFFT>
+<ZS_SIZE> 1 </ZS_SIZE>
+<ZS_I>
+<ZS_XLOG> true </ZS_XLOG>
+<ZS_Y1LOG> false </ZS_Y1LOG>
+<ZS_Y2LOG> false </ZS_Y2LOG>
+</ZS_I>
+</OV_ZSFFT>
+<OV_ZSOSCMODE>
+</OV_ZSOSCMODE>
+<OV_AUTOLABEL> 0 1 </OV_AUTOLABEL>
+<OV_AUTOLABEL> 1 1 </OV_AUTOLABEL>
+<OV_AUTOLABEL> 2 1 </OV_AUTOLABEL>
+<OV_X1LABELS>  TIME </OV_X1LABELS>
+<OV_Y1LABELS>  Cp, Cp1 </OV_Y1LABELS>
+<OV_Y2LABELS>   </OV_Y2LABELS>
+<OV_LEGENDXY> 0.30000001192092896 0.5 </OV_LEGENDXY>
+<OV_PARAMSXY> 0.30000001192092896 0.5 </OV_PARAMSXY>
+<OV_COLORTABLE> 0 <OV_COLORTABLE>
+</graph.COutputView>
+</SingleView>
+</graph.COutputFrame>
+</TabSplitter>
+<idx> 1 </idx>
+<TabSplitter>
+<SelectedIndex> -1 </SelectedIndex>
+</TabSplitter>
+</jmadonna.MultiPanel>
+
+<ChemicalReactionDialog>
+<ShowRates> true </ShowRates>
+<ShowConsts> true </ShowConsts>
+<ShowInits> true </ShowInits>
+<ShowDiffs> true </ShowDiffs>
+</ChemicalReactionDialog>
+</Document>
